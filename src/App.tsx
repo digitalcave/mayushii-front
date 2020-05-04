@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { ReactQueryConfigProvider } from "react-query";
+
+import Layout from "./containers/Layout";
+import Home from "./components/Home";
+
+const queryConfig = {
+  retry: 3,
+  throwOnError: true,
+  refetchAllOnWindowFocus: false,
+  // Query results are cached for 10 seconds
+  staleTime: 10 * 1000,
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ReactQueryConfigProvider config={queryConfig}>
+      <Layout>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+          </Switch>
+        </Router>
+      </Layout>
+    </ReactQueryConfigProvider>
   );
 }
 
