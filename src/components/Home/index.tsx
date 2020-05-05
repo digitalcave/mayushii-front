@@ -33,11 +33,11 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
 `;
 
 const Img = styled.img`
-  width: 20vw;
+  height: 50vh;
 `;
 
 const ButtonsContainer = styled.div`
@@ -47,5 +47,5 @@ const ButtonsContainer = styled.div`
 `;
 
 const Button = styled(Btn)`
-  margin: 3vw;
+  margin: 10vh 0;
 `;
